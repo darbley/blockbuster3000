@@ -1,6 +1,6 @@
 # blockbuster3000
 
-##Overwiew
+## Overwiew
 NodeJs - REST API for a Video/Movie store. 
 
 ## Stack
