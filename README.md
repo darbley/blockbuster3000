@@ -1,2 +1,7 @@
 # blockbuster3000
-REST API for a Video/Movie store. 
+
+##Overwiew
+NodeJs - REST API for a Video/Movie store. 
+
+## Stack
+Created with Express, MongoDB & Mongoose.
