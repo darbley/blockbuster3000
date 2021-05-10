@@ -1,50 +1,11 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
-const Joi = require('joi');
+const {customerSchema, validateCustomer } = require('../models/customer');
+//const validateCustomer = require('../models/customer')
 
-
-const customerSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        minLength: 3,
-        maxLength: 50
-    },
-    phone : {
-        type: String,
-        required: true,
-        minLength: 7
-    },
-    isGold: {
-        type: Boolean,
-        default: false
-    }
-});
-
+// Grab Customer 
 const Customer = mongoose.model('customer', customerSchema);
-const validateGenre = (obj) => {
-    // Required
-    // Min 3 Chars
-    // String type
-    const schema = Joi.object({
-        name: Joi.string().min(3).required()
-    });
-    
-    return schema.validate(obj);
-}
-
-const validateCustomer = (customer) => {
-    // Define schema to validate
-    const schema = Joi.object({
-        name: Joi.string().min(3).max(50).required(),
-        phone: Joi.string().min(7).required(),
-        isGold: Joi.boolean()
-
-    });
-    
-    return schema.validate(customer);
-}
 
 // Organize by route REQUESTS
 router.get('/', async (req, res) => {
