@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
-const {customerSchema, validateCustomer } = require('../models/customer');
+const {Customer, validateCustomer } = require('../models/customer');
 //const validateCustomer = require('../models/customer')
 
 // Grab Customer 
-const Customer = mongoose.model('customer', customerSchema);
+//const Customer = mongoose.model('customer', customerSchema);
 
 // Organize by route REQUESTS
 router.get('/', async (req, res) => {
