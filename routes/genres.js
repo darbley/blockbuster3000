@@ -2,19 +2,8 @@ const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
+const {Genre, validateGenre} = require('../models/genre');
 
-
-
-const genreSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        minLength: 3,
-        maxLength: 50
-    }
-});
-
-const Genre = mongoose.model('genre', genreSchema);
   
 // Organize by route REQUESTS
 router.get('/', async (req, res) => {
@@ -38,18 +27,6 @@ router.post('/', async (req, res) => {
     let result = await genre.save();
     res.send(result);
 })
-
-const validateGenre = (obj) => {
-    // Required
-    // Min 3 Chars
-    // String type
-    const schema = Joi.object({
-        name: Joi.string().min(3).required()
-    });
-    
-    return schema.validate(obj);
-}
-
 
 router.get('/:id', async (req, res) => {
     const genre = await Genre.findById(req.params.id)
