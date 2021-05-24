@@ -5,6 +5,8 @@ const Joi = require('joi');
 const homeRoute = require('./routes/home');
 const genresRoutes = require('./routes/genres');
 const customerRoutes = require('./routes/customers');
+const moviesRoutes = require('./routes/movies');
+const rentalsRoutes = require('./routes/rentals');
 // App
 const app = express();
 
@@ -30,6 +32,8 @@ app.use(express.static('public'));
 app.use('/', homeRoute);
 app.use('/api/genres', genresRoutes);
 app.use('/api/customers', customerRoutes);
+app.use('/api/movies', moviesRoutes);
+app.use('/api/rentals', rentalsRoutes);
 
 const success = (port) => {
     console.log(`listening on post ${port}`);
