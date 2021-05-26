@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const Joi = require('joi');
+Joi.objectId = require('joi-objectid')(Joi);
+
 // Routes / Controllers
 const homeRoute = require('./routes/home');
 const genresRoutes = require('./routes/genres');
 const customerRoutes = require('./routes/customers');
 const moviesRoutes = require('./routes/movies');
 const rentalsRoutes = require('./routes/rentals');
+const usersRoutes = require('./routes/users');
+
 // App
 const app = express();
 
@@ -34,6 +38,7 @@ app.use('/api/genres', genresRoutes);
 app.use('/api/customers', customerRoutes);
 app.use('/api/movies', moviesRoutes);
 app.use('/api/rentals', rentalsRoutes);
+app.use('/api/users', usersRoutes);
 
 const success = (port) => {
     console.log(`listening on post ${port}`);
