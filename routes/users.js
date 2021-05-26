@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
@@ -24,6 +25,8 @@ router.post('/', async (req, res) => {
     }); 
 
     let result = await user.save();
+
+    result = _.pick(user, ['_id', 'name', 'email']);
     res.send(result);
 
 })
